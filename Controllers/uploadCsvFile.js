@@ -5,7 +5,7 @@
 import csv from "csv-parser"
 import xlsx from "xlsx"
 import { distributeTasks } from "../Utils/distributeTasks";
-import TaskModel from "../Models/Task";
+import { Task } from "../Models/Task";
 
 export async function handleFileUpload (req, res) {
   try {
@@ -37,7 +37,7 @@ export async function handleFileUpload (req, res) {
 
     // Save each agent's tasks to DB
     for (const agentId in distributed) {
-      await TaskModel.create({
+      await Task.create({
         agentId, // this can be static or mocked for now
         tasks: distributed[agentId],
       });
