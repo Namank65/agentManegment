@@ -1,7 +1,3 @@
-// const csv = require("csv-parser");
-// const xlsx = require("xlsx");
-// const { distributeTasks } = require("../utils/distributeTasks");
-// const TaskModel = require("../models/Task");
 import csv from "csv-parser"
 import xlsx from "xlsx"
 import { distributeTasks } from "../Utils/distributeTasks";
@@ -10,6 +6,8 @@ import { Task } from "../Models/Task";
 export async function handleFileUpload (req, res) {
   try {
     const file = req.file;
+    console.log(req);
+    
 
     if (!file) return res.status(400).json({ message: "No file uploaded" });
 

@@ -1,7 +1,7 @@
-import express from "express";
+// import express from "express";
 import multer from "multer";
-import { handleFileUpload } from "../Controllers/uploadCsvFile";
-const router = express.Router();
+// import { handleFileUpload } from "../Controllers/uploadCsvFile";
+// const router = express.Router();
 
 const storage = multer.memoryStorage(); // store in memory
 const upload = multer({ 
@@ -13,6 +13,6 @@ const upload = multer({
   }
 });
 
-router.post("/upload", upload.single("file"), handleFileUpload);
+// router.post("/upload", upload.single("file"), handleFileUpload);
 
-export default router;
+export default upload;
