@@ -1,9 +1,9 @@
-import express from "express";
-import { handleFileUpload } from "../Controllers/uploadCsvFile";
-import upload from "../Middleware/Multer.middleware";
+import {Router} from "express";
+import { handleFileUpload } from "../Controllers/uploadCsvFile.js";
+import upload from "../Middleware/Multer.middleware.js";
 
-const router = express.Router();
+const router = Router();
 
-router.post("/upload", upload("file"), handleFileUpload);
+router.route("/upload").post(upload.single("file"), handleFileUpload)
 
-// export default router
+export default router;

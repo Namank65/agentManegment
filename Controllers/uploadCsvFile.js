@@ -1,18 +1,16 @@
 import csv from "csv-parser"
 import xlsx from "xlsx"
-import { distributeTasks } from "../Utils/distributeTasks";
-import { Task } from "../Models/Task";
+import { distributeTasks } from "../Utils/distributeTasks.js";
+import { Task } from "../Models/Task.js";
 
 export async function handleFileUpload (req, res) {
   try {
     const file = req.file;
-    console.log(req);
     
-
     if (!file) return res.status(400).json({ message: "No file uploaded" });
-
+    
     let entries = [];
-
+    
     if (file.mimetype === "text/csv") {
       const buffer = file.buffer.toString();
       const lines = buffer.split("\n").slice(1);
@@ -36,7 +34,7 @@ export async function handleFileUpload (req, res) {
     // Save each agent's tasks to DB
     for (const agentId in distributed) {
       await Task.create({
-        agentId, // this can be static or mocked for now
+        agentId,
         tasks: distributed[agentId],
       });
     }

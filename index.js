@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import ConnectDb from "./Db/index.js"
-// import router from "./Routes/uploadCsvRoute.js";
+import uploadRoute from "./Routes/uploadCsvRoute.js";
 
 dotenv.config({
   path: "./.env"
@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static("public"));
-// app.use("/api", router);
+app.use("/api", uploadRoute);
 
 ConnectDb()
 .then(() => {
