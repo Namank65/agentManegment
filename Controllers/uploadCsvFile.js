@@ -28,8 +28,11 @@ export async function handleFileUpload (req, res) {
 
     if (entries.length === 0) return res.status(400).json({ message: "No valid entries found" });
 
+    
+    
     // Split entries among 5 agents
     const distributed = distributeTasks(entries, 5);
+    // console.log(distributed);
 
     // Save each agent's tasks to DB
     for (const agentId in distributed) {
